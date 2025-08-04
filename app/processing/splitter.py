@@ -69,6 +69,6 @@ def split_html_with_headers(folder_path):
 
     for html_page in html_pages:
         html_documents = splitter_func(html_string=html_page)
-        all_pages_html_documents.append(html_documents)
+        all_pages_html_documents += html_documents
     
     return all_pages_html_documents

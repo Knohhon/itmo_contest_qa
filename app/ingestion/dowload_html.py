@@ -60,6 +60,6 @@ def save_to_html():
 
         if full_html:
 
-            with open("./app/data/ai_page_content.html", "w", encoding="utf-8") as f:
+            with open(f"./app/data/{url}.html", "w", encoding="utf-8") as f:
                 f.write(full_html)
             print("Полный HTML страницы сохранен в файл ./data/ai_page_content.html")
