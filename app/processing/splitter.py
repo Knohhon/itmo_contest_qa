@@ -1,8 +1,9 @@
 from typing import List, Tuple
 from langchain.docstore.document import Document
 from langchain_text_splitters import HTMLHeaderTextSplitter # Примечание: Используем стандартный HTMLHeaderTextSplitter
+from utils.html_loader import get_file_contents_from_folder
 
-def split_html_with_headers(
+def splitter_func(
     html_string: str,
     max_chunk_size: int = 500,
     headers_to_split_on: List[Tuple[str, str]] = None
@@ -60,3 +61,14 @@ def split_html_with_headers(
     # return splits
 
     return html_header_splits
+
+
+def split_html_with_headers(folder_path):
+    html_pages = get_file_contents_from_folder(folder_path)
+    all_pages_html_documents = []
+
+    for html_page in html_pages:
+        html_documents = splitter_func(html_string=html_page)
+        all_pages_html_documents.append(html_documents)
+    
+    return all_pages_html_documents
